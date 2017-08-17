@@ -29,11 +29,16 @@ if ( ! file_exists(getenv('STEAMCMD_PATH')) ) {
 // Set up the console app
 $app = new Application(new Container, new Dispatcher, '5.4');
 
+$databaseFilename = env('DATABASE_FILE', 'database.sqlite');
+if (!file_exists($databaseFilename)) {
+	touch($databaseFilename);
+}
+
 // Set up the SQLite database connection
 $capsule = new Capsule;
 $capsule->addConnection([
     'driver'    => 'sqlite',
-    'database'  => env('DATABASE_FILE', 'database.sqlite')
+    'database'  => $databaseFilename
 ]);
 $capsule->setAsGlobal();
 
