@@ -16,7 +16,7 @@ apt install -y  lib32gcc1 \
                 expect \
 
 printf "${GREEN}Installing dependencies with Composer${BLACK}\n"
-composer update
+cd $SCRIPT_DIR && composer update
 
 printf "${GREEN}Installing Steam${BLACK}\n"
 mkdir -p /usr/games/steam && cd /usr/games/steam && curl -sqL "http://media.steampowered.com/client/steamcmd_linux.tar.gz" | tar zxvf -
