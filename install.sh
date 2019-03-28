@@ -3,17 +3,11 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 GREEN='\033[0;32m'
 BLACK='\033[0m'
 
-printf "${GREEN}Installing dependencies with apt${BLACK}\n"
-apt install -y  lib32gcc1 \
-                lib32stdc++6 \
-                lib32tinfo5 \
-                lib32ncurses5 \
-                libcurl3-gnutls:i386 \
-                php7.0-cli \
-                php7.0-mbstring \
-                php7.0-sqlite \
-                composer \
-                expect \
+# printf "${GREEN}Installing dependencies with apt${BLACK}\n"
+# apt install -y  lib32gcc1 \
+#                 lib32stdc++6 \
+#                 lib32tinfo5 \
+#                 libcurl3-gnutls:i386 \
 
 printf "${GREEN}Installing dependencies with Composer${BLACK}\n"
 cd $SCRIPT_DIR && composer update
