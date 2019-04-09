@@ -14,3 +14,9 @@ cd $SCRIPT_DIR && composer update
 
 printf "${GREEN}Installing Steam${BLACK}\n"
 mkdir -p /usr/games/steam && cd /usr/games/steam && curl -sqL "http://media.steampowered.com/client/steamcmd_linux.tar.gz" | tar zxvf -
+
+cd $SCRIPT_DIR && ./lancache-autofill app:initialise-database
+
+cd $SCRIPT_DIR && ./lancache-autofill steam:update-app-list
+
+cd $SCRIPT_DIR && ./lancache-autofill steam:authorise-account $DEFAULT_STEAM_USER
