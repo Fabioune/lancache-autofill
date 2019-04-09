@@ -18,9 +18,9 @@ if (file_exists($a = __DIR__.'/../../autoload.php')) {
 }
 
 // Load environment variables
-// $dotenv = new Dotenv(__DIR__);
-// $dotenv->load();
-// $dotenv->required(['DOWNLOADS_DIRECTORY', 'STEAMCMD_PATH', 'DEFAULT_STEAM_USER']);
+$dotenv = new Dotenv(__DIR__);
+$dotenv->load();
+$dotenv->required(['DOWNLOADS_DIRECTORY', 'STEAMCMD_PATH', 'DEFAULT_STEAM_USER']);
 
 if ( ! file_exists(getenv('STEAMCMD_PATH')) ) {
     die('SteamCMD not found - please check the STEAMCMD_PATH environment variable is set correctly');
