@@ -19,7 +19,11 @@ printf "${GREEN}Creating database file${BLACK}\n"
 cd $SCRIPT_DIR && touch "database.sqlite"
 
 printf "${GREEN}Creating your enviroment file${BLACK}\n"
-cd $SCRIPT_DIR && cp ".env.example" ".env" && /bin/nano ".env"
+
+echo > ".env";
+echo DOWNLOADS_DIRECTORY="$DOWNLOADS_DIRECTORY" >> ".env";
+echo STEAMCMD_PATH="$STEAMCMD_PATH" >> ".env";
+echo DEFAULT_STEAM_USER="$DEFAULT_STEAM_USER" >> ".env";
 
 cd $SCRIPT_DIR && ./lancache-autofill app:initialise-database
 
