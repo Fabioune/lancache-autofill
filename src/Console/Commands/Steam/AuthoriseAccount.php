@@ -33,14 +33,16 @@ class AuthoriseAccount extends Command
         $account = $this->argument('account') ?? getenv('DEFAULT_STEAM_USER');
 
         $this->info('Authorising account '. $account);
-        $password = $this->secret('Please enter your password');
-        $steamGuardCode = $this->ask('Please enter your Steam Guard code', false);
+        // $password = $this->secret('Please enter your password');
+        // $steamGuardCode = $this->ask('Please enter your Steam Guard code', false);
+        $password = getenv('DEFAULT_STEAM_PASS');
+        $steamGuardCode = null;
 
         // Start SteamCMD with the arguments, using "unbuffer"
         // as SteamCMD buffers output when it is not run in a
         // tty, which prevents us showing output line by line
         $process = new Process('unbuffer '. getenv('STEAMCMD_PATH') . ' +login ' . $account . ' ' . $password . ' '. $steamGuardCode .' +quit');
-        
+
         // Set a short timeout for this interactive login prompt
         $process->setTimeout(120);
 

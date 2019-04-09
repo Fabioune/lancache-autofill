@@ -14,17 +14,3 @@ cd $SCRIPT_DIR && composer update
 
 printf "${GREEN}Installing Steam${BLACK}\n"
 mkdir -p /usr/games/steam && cd /usr/games/steam && curl -sqL "http://media.steampowered.com/client/steamcmd_linux.tar.gz" | tar zxvf -
-
-printf "${GREEN}Creating database file${BLACK}\n"
-cd $SCRIPT_DIR && touch "database.sqlite"
-
-printf "${GREEN}Creating your enviroment file${BLACK}\n"
-
-echo > ".env";
-echo DOWNLOADS_DIRECTORY="$DOWNLOADS_DIRECTORY" >> ".env";
-echo STEAMCMD_PATH="$STEAMCMD_PATH" >> ".env";
-echo DEFAULT_STEAM_USER="$DEFAULT_STEAM_USER" >> ".env";
-
-cd $SCRIPT_DIR && ./lancache-autofill app:initialise-database
-
-cd $SCRIPT_DIR && ./lancache-autofill steam:update-app-list
